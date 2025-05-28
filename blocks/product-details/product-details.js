@@ -86,7 +86,8 @@ export default async function decorate(block) {
   );
   const $description = fragment.querySelector('.product-details__description');
   const $attributes = fragment.querySelector('.product-details__attributes');
-
+  const $ratings = fragment.querySelector('.product-details__ratings');
+  
   block.appendChild(fragment);
 
   // Alert
@@ -228,6 +229,7 @@ export default async function decorate(block) {
       if (product) {
         setMetaTags(product);
         document.title = product.name;
+        $ratings.append(`${product.rating.average} stars average (out of ${product.rating.total} ratings)`);
       }
     },
     { eager: true },
